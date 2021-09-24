@@ -1,29 +1,30 @@
+   
 #!/bin/bash
 
-export GITHUB_USER=""
-export GITHUB_EMAIL=""
+export GITHUB_USER="geek0609"
+export GITHUB_EMAIL="astroashwin@outlook.com"
 
-export device=""
+export device="ginkgo"
 
-export ROM=""
-export ROM_DIR=""
-export ROM_VERSION=""
+export ROM="Sakura"
+export ROM_DIR="$HOME/jenkins/Sakura-Android-11"
+export ROM_VERSION="5.2"
 export official="false"
-export local_manifest_url=""
-export manifest_url=""
-export rom_vendor_name=""
-export branch=""
+export local_manifest_url="https://raw.githubusercontent.com/geek0609/local_manifests/ginkgo_sakura/local_manifest.xml"
+export manifest_url="https://github.com/ProjectSakura/android"
+export rom_vendor_name="lineage"
+export branch="11"
 export bacon="bacon"
-export buildtype=""
-export clean=""
-export generate_incremental=""
-export upload_recovery=""
+export buildtype="user"
+export clean="clean"
+export generate_incremental="false"
+export upload_recovery="false"
 
-export ccache=""
-export ccache_size=""
+export ccache="true"
+export ccache_size="100"
 
-export jenkins="false"
+export jenkins="true"
 
-export release_repo=""
+export release_repo="kiam001/releases"
 
 export timezone="UTC"
