@@ -1,12 +1,10 @@
 #!/bin/bash
-if [ ! -d "releases" ]; then
-    git clone https://github.com/JarlPenguin/releases.git
+if [ ! -d "jenkins-local" ]; then
+    git clone https://github.com/geek0609/jenkins-local
 fi
-cd releases
-curl https://storage.googleapis.com/git-repo-downloads/repo > bin/repo
-chmod a+x bin/*
+cd jenkins-local
 export PATH="${PATH}:$(pwd)/bin"
-export branch=$(git branch | grep \* | cut -d ' ' -f2)
+export branch="master"
 git checkout -- .
 git fetch --all
 git checkout origin/"${branch}"
