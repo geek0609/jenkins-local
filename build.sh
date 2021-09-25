@@ -50,3 +50,7 @@ else
     telegram -N -M "Build failed in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
     exit 1
 fi
+
+if [${SAKURA_OFFICIAL}]; then
+   bash vendor/lineage/build/tools/createjson.sh
+fi
