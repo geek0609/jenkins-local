@@ -15,7 +15,7 @@ export rom_vendor_name="lineage"
 export branch="11"
 export bacon="bacon"
 export buildtype="user"
-export clean="remove_device_out"
+# export clean="remove_device_out"
 export generate_incremental="false"
 export upload_recovery="false"
 
@@ -28,4 +28,4 @@ export release_repo="geek0609/releases"
 
 export timezone="UTC"
 
-export post_build_cleanup="device"
+# export post_build_cleanup="device"
