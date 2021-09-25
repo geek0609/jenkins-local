@@ -35,14 +35,20 @@ export finalzip_path=$(ls "${outdir}"/*$(date +%Y)*.zip | tail -n -1)
 export zip_name=$(echo "${finalzip_path}" | sed "s|${outdir}/||")
 export tag=$( echo "$(date +%H%M)-${zip_name}" | sed 's|.zip||')
 
+export name="${ROM} for ${device}"
+
 if [ -e "${finalzip_path}" ]; then
     echo "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
 
     echo "Uploading"
 
-    github-release "${release_repo}" "${tag}" "master" "${ROM} for ${device}
-
-Date: $(env TZ="${timezone}" date)" "${finalzip_path}"
+    export description="${ROM} for ${device} , Date: $(env TZ="${timezone}" date)" "${finalzip_path}"
+    # Create a release
+    release=$(curl -XPOST -H "Authorization:token ${GITHUB_TOKEN}" --data "{\"tag_name\": \"$tag\", \"target_commitish\": \"master\", \"name\": \"$name\", \"body\": \"$description\", \"draft\": false, \"prerelease\": false}" https://api.github.com/repos/${release_repo}/releases)
+    # Extract the id of the release from the creation response
+    id=$(echo "$release" | sed -n -e 's/"id":\ \([0-9]\+\),/\1/p' | head -n 1 | sed 's/[[:blank:]]//g')
+    # Upload the artifact
+    curl -XPOST -H "Authorization:token ${GITHUB_TOKEN}" -H "Content-Type:application/octet-stream" --data-binary @${finalzip_path} https://uploads.github.com/repos/${release_repo}/releases/$id/assets?name=${zip_name}
    
     echo "Uploaded"
 else
