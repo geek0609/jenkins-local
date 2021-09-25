@@ -25,3 +25,5 @@ export jenkins="true"
 export release_repo="geek0609/releases"
 
 export timezone="UTC"
+
+export post_build_cleanup="device"

@@ -54,3 +54,9 @@ fi
 if [${SAKURA_OFFICIAL}]; then
    bash vendor/lineage/build/tools/createjson.sh
 fi
+
+if [ "${post_build_cleanup}" == "full" ]; then
+    rm -rf out
+elif [ "${post_build_cleanup}" == "device" ]; then
+    rm -rf "${outdir}"
+fi
