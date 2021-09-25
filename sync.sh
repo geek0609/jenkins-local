@@ -7,7 +7,7 @@ fi
 rm -rf .repo/local_manifests
 mkdir -p .repo/local_manifests
 wget "${local_manifest_url}" -O .repo/local_manifests/manifest.xml
-repo sync --force-sync --no-tags --no-clone-bundle --optimized-fetch --prune -c -v
+repo sync --current-branch --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune 
 syncsuccessful="${?}"
 SYNC_END=$(date +"%s")
 SYNC_DIFF=$((SYNC_END - SYNC_START))
