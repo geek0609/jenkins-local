@@ -57,8 +57,9 @@ else
     exit 1
 fi
 
-if [${SAKURA_OFFICIAL}]; then
-   bash vendor/lineage/build/tools/createjson.sh
+if ["${ROM}" == "Sakura"]; then
+   cd "${ROM_DIR}"
+   bash "${ROM_DIR}/vendor/lineage/build/tools/createjson.sh"
 fi
 
 if [ "${post_build_cleanup}" == "full" ]; then
