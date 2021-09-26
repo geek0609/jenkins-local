@@ -22,7 +22,7 @@ export ccache_size="20"
 
 export jenkins="true"
 
-export release_repo="geek0609/releases"
+export release_repo="geek0609/jenkins-releases"
 
 export timezone="UTC"
 
